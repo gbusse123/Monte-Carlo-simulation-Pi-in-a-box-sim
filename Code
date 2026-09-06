@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+inside_circle = 0
+sample_sizes = [100,1000,10000,100000,1000000]
+number_of_points = 0
+estimates = []
+for number_of_points in sample_sizes:
+
+
+  for i in range(number_of_points):
+
+    x = np.random.rand()
+    y = np.random.rand()
+
+    distance_squared = x * x + y * y
+
+    if distance_squared <= 1:
+        inside_circle = inside_circle + 1
+    else:
+        inside_circle = inside_circle
+
+
+  pi= (4*inside_circle)/number_of_points
+  print(pi)
+
+  estimates.append(pi)
+
+  inside_circle = 0
+
+plt.plot(sample_sizes, estimates)
